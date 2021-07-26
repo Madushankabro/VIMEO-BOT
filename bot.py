@@ -44,11 +44,12 @@ async def vimeo(_, message):
         v = Vimeo(input)
         stream = v.streams
         vid = stream[-1].download(download_directory=LOCATION,
-                        filename="vimeo")
+                        filename="vimeo.mp4")
+        file = "./vimeo.mp4"
     except Exception as e:
         print(str(e))
         return
-    await bot.send_video(message.chat.id, video=vid)
+    await bot.send_video(message.chat.id, video=file)
     os.remove(vid)
 
 bot.start()

@@ -40,10 +40,15 @@ bot = Client(
 @bot.on_message(filters.regex(pattern="https://vimeo.com/") & filters.private)
 async def vimeo(_, message):
     input = message.text
-    v = Vimeo(input)
-    vid = v.best_stream.download(download_directory=LOCATION,
+    try:
+        v = Vimeo(input)
+        vid = v.best_stream.download(download_directory=LOCATION,
                         filename="vimeo.mp4")
-    await bot.send_video(message.chat.id, vid)
+    except Exception as e:
+        print(str(e))
+        return
+    await bot.send_video(message.chat.id, video=vid)
+    os.remove(vid)
 
 bot.start()
 idle()

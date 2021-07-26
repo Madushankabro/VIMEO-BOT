@@ -1,6 +1,6 @@
 # Vimeo Bot ✨
 
-## Vimeo links downloader Telegram bot 🎬
+## Vimeo video links downloader Telegram bot 🎬
 
 ### Easy Deploy 🏃‍♂
 

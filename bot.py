@@ -60,7 +60,7 @@ async def vimeo(_, message):
         file = "./vimeo.mp4"
         await msg.edit("📤 `Uploading...`")
         cap = f"✨ `Uploaded By:` {user} \n💻 `Bot By:` @Infinity_Bots"    
-        await bot.send_video(message.chat.id, video=file)
+        await bot.send_video(message.chat.id, video=file, caption=cap)
         await msg.delete()
         os.remove(file)
     except Exception as e:

@@ -42,7 +42,7 @@ async def vimeo(_, message):
     input = message.text
     try:
         v = Vimeo(input)
-        streams = v.streams
+        stream = v.streams
         vid = stream[-1].download(download_directory=LOCATION,
                         filename="vimeo")
     except Exception as e:

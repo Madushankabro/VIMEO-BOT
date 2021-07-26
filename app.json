@@ -1,0 +1,28 @@
+{
+    "name": "Vimeo Bot",
+    "description": "Vimeo video links downloader Telegram bot.",
+    "keywords": [
+        "Vimeo",
+        "Vimeo downloader",
+        "Telegram Bot",
+        "Infinity Bots"
+    ],
+    "repository": "https://github.com/ImJanindu/Vimeo-Bot",
+    "success_url": "https://t.me/Infinity_Bots",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Your Telegram Bot Token from @BotFather",
+            "value": ""
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {"url": "heroku/python"}
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}

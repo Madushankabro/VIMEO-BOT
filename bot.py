@@ -36,21 +36,36 @@ bot = Client(
    bot_token=Config.BOT_TOKEN,
 )
 
+# start message
+@bot.on_message(filters.command("start") & filters.private)
+async def start(_, message):
+   user = message.from_user.mention
+   await message.reply_text(f"""Hey {user}, I'm Vimeo downloader bot ✨
 
+I can download vimeo video links and upload to Telegram 💥
+Send me a vimeo video link to start download 🚿""",
+       reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Source Code 💻", url="https://github.com/ImJanindu/Vimeo-Bot")]]))
+
+# vimeo download
 @bot.on_message(filters.regex(pattern="https://vimeo.com/") & filters.private)
 async def vimeo(_, message):
     input = message.text
+    user = message.from_user.mention
+    msg = await message.reply_text("📥 `Downloading...`")
     try:
         v = Vimeo(input)
         stream = v.streams
-        vid = stream[-1].download(download_directory=LOCATION,
+        stream[-1].download(download_directory=LOCATION,
                         filename="vimeo.mp4")
         file = "./vimeo.mp4"
+        await msg.edit("📤 `Uploading...`")
+        cap = f"✨ `Uploaded By:` {user} \n💻 `Bot By:` @Infinity_Bots"    
+        await bot.send_video(message.chat.id, video=file)
+        os.remove(file)
     except Exception as e:
         print(str(e))
+        await msg.edit("❌ `Error.`")
         return
-    await bot.send_video(message.chat.id, video=file)
-    os.remove(vid)
 
 bot.start()
 idle()

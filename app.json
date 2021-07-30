@@ -7,8 +7,8 @@
         "Telegram Bot",
         "Infinity Bots"
     ],
-    "repository": "https://github.com/ImJanindu/Vimeo-Bot",
-    "success_url": "https://t.me/Infinity_Bots",
+    "repository": "https://github.com/Madushankabro/VIMEO-BOT",
+    "success_url": "https://t.me/epusthakalaya_bots",
     "env": {
         "BOT_TOKEN": {
             "description": "Your Telegram Bot Token from @BotFather",
